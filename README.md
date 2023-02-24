@@ -16,4 +16,31 @@ Here i am only working on Window aggregations.
 
 --> window function basically takes two main important things one is partition by and other one is order. i have showed an example in the notebook file.
 
+# Creating_User_defined_Fucntions_Spark
+
+--> Please Use Dataset1 as a loadable file.
+
+So, here i am working on UDF basically in Spark:
+
+--> In Spark there are two different kind of UDF's.
+
+1. UDF with Structured API's
+2. UDF with SQl/String Expression
+
+--> Everytime we create a UDF we need to register it to use that. Register means giving an authorization to the function and telling spark to allow our function.
+
+Register USing first Kind:
+
+spark.udf.register("name_you_want_to_register", fucntion_name, Type)
+**Example:**
+spark.udf.register("parseAgeCheck", ageCheck, StringType())
+
+Another Type:
+name_ypu_want = udf(function_name, Type)
+**Example:**
+parseAgeCheck2 = udf(ageCheck2,StringType())
+
+# For more reference of UDF:
+https://sparkbyexamples.com/pyspark/pyspark-udf-user-defined-function/
+
 
