@@ -43,4 +43,37 @@ parseAgeCheck2 = udf(ageCheck2,StringType())
 # For more reference of UDF:
 https://sparkbyexamples.com/pyspark/pyspark-udf-user-defined-function/
 
+# Simple_Aggreagtions_GroupBy_Aggregations
+
+Dataset Used: Orders_Data_Reduced.xsls
+
+So, Here i have disscussed about some of the basic sample aggreagtions and GroupBy aggregations and showed an example of each.
+
+In my view what exactly is simple aggregations. You know it is like when you want calcualte of something total like a sum of sales, avg of something like that..
+
+and coming to groupBy as we all know what does it do that what it does haha...
+
+--> I have done the same problem in three different ways like column string and column object and spark sql.. As you can see it in the python notebook i attached which is called "Simple_Aggreagtions_GroupBy_Aggregations"
+
+--> One more thing remember is if you observe there is some difference in terms of writing code using simple aggregation and groupBy it is like i have used select transformation in simple agg and caluclting what i want but in groupBy i haven't used the select keyword to select columns but instead i have done using "agg" it is because groupBy is a transformation and it is not providing the select transformation.
+
+--> you can ask it is not possible to use select with groupBy yes it is possible when you use spark sql if you dont want to use spark sql then you dont have option to use but you can use like i used.
+
+Example: you can also use like these. 
+
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder \
+        .appName("groupBy and select example") \
+        .getOrCreate()
+
+df = spark.read.csv("path/to/data.csv", header=True, inferSchema=True)
+
+grouped_df = df.groupBy("column1", "column2")
+agg_df = grouped_df.agg({"column3": "sum", "column4": "avg"})
+selected_df = agg_df.select("column1", "column2", "sum(column3)", "avg(column4)")
+
+selected_df.show()
+
+
 
